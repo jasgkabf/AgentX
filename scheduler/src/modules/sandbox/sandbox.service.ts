@@ -57,7 +57,7 @@ export class SandboxService {
     this.logger.log(`为任务 ${taskId} 创建沙箱容器`);
 
     const containerName = `agentx-sandbox-${taskId.slice(0, 8)}`;
-    const workspacePath = `/workspace/agentx/tasks/${taskId}`;
+    const workspacePath = `/workspace/tasks/${taskId}`;
 
     try {
       const createResponse = await this.dockerHttpClient.post('/containers/create', {

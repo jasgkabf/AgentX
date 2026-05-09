@@ -64,8 +64,8 @@ docker compose version
 ## 第二步：克隆项目
 
 ```bash
-git clone https://github.com/你的用户名/agentx.git
-cd agentx
+git clone https://github.com/jasgkabf/AgentX.git
+cd AgentX
 ```
 
 ---
@@ -255,7 +255,7 @@ docker compose logs redis
 
 ```bash
 # 1. 拉取最新代码
-cd agentx
+cd AgentX
 git pull origin main
 
 # 2. 重新构建镜像
