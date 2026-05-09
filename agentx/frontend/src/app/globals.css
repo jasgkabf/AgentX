@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: #0A0A0F;
+  color: #E4E4E7;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #111118;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2A2A3A;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3A3A4A;
+}
+
+pre {
+  background: #0D0D14 !important;
+  border: 1px solid #2A2A3A;
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+code {
+  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+  font-size: 13px;
+}
+
+:not(pre) > code {
+  background: #1A1A24;
+  border: 1px solid #2A2A3A;
+  border-radius: 4px;
+  padding: 2px 6px;
+  color: #3B82F6;
+}
+
+.hljs {
+  background: #0D0D14 !important;
+  color: #E4E4E7;
+}
+
+.hljs-keyword { color: #C792EA; }
+.hljs-string { color: #C3E88D; }
+.hljs-number { color: #F78C6C; }
+.hljs-function { color: #82AAFF; }
+.hljs-comment { color: #546E7A; }
+.hljs-variable { color: #FFCB6B; }
+.hljs-type { color: #FFCB6B; }
+.hljs-built_in { color: #82AAFF; }
+.hljs-attr { color: #F07178; }
+.hljs-tag { color: #F07178; }
+.hljs-name { color: #F07178; }
+.hljs-selector-class { color: #FFCB6B; }
+.hljs-selector-id { color: #FFCB6B; }
+.hljs-attribute { color: #C792EA; }
+.hljs-meta { color: #FFCB6B; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent 25%, rgba(59, 130, 246, 0.1) 50%, transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+.xterm {
+  padding: 12px;
+}
+
+.xterm-viewport::-webkit-scrollbar {
+  width: 6px;
+}
+
+.xterm-viewport::-webkit-scrollbar-thumb {
+  background: #2A2A3A;
+  border-radius: 3px;
+}

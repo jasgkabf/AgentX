@@ -1,0 +1,42 @@
+{
+  "name": "agentx-scheduler",
+  "version": "1.0.0",
+  "description": "AgentX Scheduler - Task Orchestration Layer",
+  "private": true,
+  "scripts": {
+    "build": "nest build",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:prod": "node dist/main"
+  },
+  "dependencies": {
+    "@nestjs/bullmq": "^11.0.4",
+    "@nestjs/common": "^10.4.0",
+    "@nestjs/config": "^3.2.3",
+    "@nestjs/core": "^10.4.0",
+    "@nestjs/platform-express": "^10.4.0",
+    "@nestjs/platform-socket.io": "^10.4.0",
+    "@nestjs/swagger": "^7.4.0",
+    "@nestjs/typeorm": "^10.0.1",
+    "@nestjs/websockets": "^10.4.0",
+    "axios": "^1.7.7",
+    "bullmq": "^5.12.0",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.1",
+    "crypto-js": "^4.2.0",
+    "pg": "^8.12.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1",
+    "socket.io": "^4.7.5",
+    "typeorm": "^0.3.20",
+    "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^10.4.0",
+    "@nestjs/schematics": "^10.1.4",
+    "@types/crypto-js": "^4.2.2",
+    "@types/node": "^22.5.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4"
+  }
+}
