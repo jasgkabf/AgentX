@@ -59,6 +59,11 @@ services:
       - DOCKER_HOST=unix:///var/run/docker.sock
       - ENCRYPTION_KEY=${ENCRYPTION_KEY:-agentx-encryption-key-2024}
       - SANDBOX_IMAGE=agentx-sandbox
+      - DB_SYNCHRONIZE=true
+      - LLM_PROVIDER=${LLM_PROVIDER:-}
+      - LLM_MODEL_NAME=${LLM_MODEL_NAME:-}
+      - LLM_API_KEY=${LLM_API_KEY:-}
+      - LLM_BASE_URL=${LLM_BASE_URL:-}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - workspace:/workspace

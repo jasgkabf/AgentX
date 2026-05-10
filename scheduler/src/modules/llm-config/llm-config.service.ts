@@ -134,17 +134,35 @@ export class LlmConfigService {
     const config = await this.llmConfigRepository.findOne({
       where: { userId, isDefault: true },
     });
-    if (!config) {
-      const firstConfig = await this.llmConfigRepository.findOne({
-        where: { userId },
-        order: { createdAt: 'DESC' },
-      });
-      if (!firstConfig) {
-        return null;
-      }
+    if (config) {
+      return this.findOne(config.id, true);
+    }
+    const firstConfig = await this.llmConfigRepository.findOne({
+      where: { userId },
+      order: { createdAt: 'DESC' },
+    });
+    if (firstConfig) {
       return this.findOne(firstConfig.id, true);
     }
-    return this.findOne(config.id, true);
+    return this.getEnvFallback();
+  }
+
+  private getEnvFallback(): any {
+    const provider = this.configService.get<string>('LLM_PROVIDER');
+    const modelName = this.configService.get<string>('LLM_MODEL_NAME');
+    const apiKey = this.configService.get<string>('LLM_API_KEY');
+    const baseUrl = this.configService.get<string>('LLM_BASE_URL');
+    if (provider && modelName && apiKey) {
+      return {
+        id: 'env-default',
+        provider,
+        modelName,
+        apiKey,
+        baseUrl: baseUrl || null,
+        isDefault: true,
+      };
+    }
+    return null;
   }
 
   private async clearDefaultForUser(userId: string): Promise<void> {

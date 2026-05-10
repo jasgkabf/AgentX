@@ -142,8 +142,12 @@ export default function HomePage() {
 
   const handleCreateTask = useCallback(
     async (description: string) => {
+      if (isLoading) return;
       try {
         setLoading(true);
+        if (currentTask && (status === 'running' || status === 'pending')) {
+          return;
+        }
         clearCurrentTask();
         const task = await api.tasks.create({ description });
         setCurrentTask(task);
@@ -154,8 +158,12 @@ export default function HomePage() {
         setLoading(false);
       }
     },
-    [tasks, clearCurrentTask, setCurrentTask, setStatus, setLoading, setTasks]
+    [tasks, currentTask, status, isLoading, clearCurrentTask, setCurrentTask, setStatus, setLoading, setTasks]
   );
+
+  const handleNewChat = useCallback(() => {
+    clearCurrentTask();
+  }, [clearCurrentTask]);
 
   const handleCancelTask = useCallback(async () => {
     if (!currentTask) return;
@@ -249,12 +257,10 @@ export default function HomePage() {
                 variant="secondary"
                 size="sm"
                 className="w-full"
-                onClick={() => {
-                  clearCurrentTask();
-                }}
+                onClick={handleNewChat}
               >
                 <Plus size={14} />
-                新任务
+                新对话
               </Button>
             </div>
 
@@ -420,7 +426,17 @@ export default function HomePage() {
         </div>
 
         {/* Input Area */}
-        <TaskInput onSubmit={handleCreateTask} isLoading={isLoading} />
+        <TaskInput
+          onSubmit={handleCreateTask}
+          isLoading={isLoading || status === 'running'}
+          placeholder={
+            status === 'running'
+              ? '智能体正在执行中，请等待...'
+              : currentTask && (status === 'completed' || status === 'failed' || status === 'cancelled')
+              ? '输入新的指令继续...'
+              : '描述你想让智能体完成的任务...'
+          }
+        />
       </div>
 
       {/* Right Panel Toggle */}
